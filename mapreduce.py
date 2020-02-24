@@ -45,13 +45,15 @@ if __name__ == '__main__':
         with open(source[0], 'r') as f:
             source[1] = f.read()
     start = time.time()
-    t = 0
+    c = 0
     with pymp.Parallel(int(nthreads)) as p:
         for symbol in p.iterate(symbols):
+            total = 0
             for result in map(count, [symbol]*len(candidates), [x[1].split(' ') for x in candidates]):
-                p.print("Found %3d occurrence(s) of %s in candidate %s" % (result, symbol, candidates[t][0]))
-                t = (t + 1) % len(candidates)
-            p.print()
+                p.print("Found %3d occurrence(s) of %s in candidate %s" % (result, symbol, candidates[c][0]))
+                c = (c + 1) % len(candidates)
+                total += result
+            p.print("Total occurrences of %s: %d\n" % (symbol, total))
     end = time.time()
     duration = end-start
     print("Duration: %ss" % duration)
