@@ -1,4 +1,13 @@
 #+TITLE: Map Reduce
 #+AUTHOR: Jennifer Sanchez
 
+* Execution Instructions
 
+  - mapreduce.py :: $ ./mapreduce.py <number_of_threads>
+    
+  - mapreduce_auto.py :: ./mapreduce.py # Omits the output of the count
+    function for brevity
+
+* Report
+
+  
